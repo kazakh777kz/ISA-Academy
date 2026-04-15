@@ -429,7 +429,7 @@
                 <div class="footer-contacts">
                     <h4>Контакты</h4>
                     <div class="footer-contact">
-                        <p><strong>Телефон:</strong><br><a href="tel:+77001234567">+7 (707) 181-31-18</a></p>
+                        <p><strong>Телефон:</strong><br><a href="tel:+77001234567">+7 (700) 123-45-67</a></p>
                         <p style="margin-top: 1rem;"><strong>Email:</strong><br><a href="mailto:info@isa-academy.kz">info@isa-academy.kz</a></p>
                         <p style="margin-top: 1rem;"><strong>Режим работы:</strong><br>Пн-Пт: 9:00 - 21:00<br>Сб: 10:00 - 18:00</p>
                     </div>
@@ -451,24 +451,36 @@
                 <p class="modal-subtitle">Заполните форму, мы свяжемся с вами в течение часа</p>
             </div>
             <div class="modal-body">
-                <form id="leadForm" onsubmit="handleSubmit(event)">
+                <!-- FORMСПРИ ФОРМА С ССЫЛКОЙ -->
+                <form id="leadForm" action="https://formspree.io/f/xnjljzlp" method="POST">
+                    <!-- Тема письма -->
+                    <input type="hidden" name="_subject" value="Новая заявка с сайта ISA-Academy">
+                    
+                    <!-- Куда перенаправить после отправки -->
+                    <input type="hidden" name="_next" value="https://isa-academy.github.io/#success">
+                    
                     <div class="form-group">
                         <label class="form-label" for="name">Ваше имя *</label>
-                        <input type="text" id="name" class="form-input" placeholder="Айгуль Семенова" required>
+                        <input type="text" name="name" id="name" class="form-input" placeholder="Айгуль Семенова" required>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label" for="phone">Телефон (WhatsApp) *</label>
-                        <input type="tel" id="phone" class="form-input" placeholder="+7 (___) ___-__-__" required>
+                        <input type="tel" name="phone" id="phone" class="form-input" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-input" placeholder="example@mail.com">
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">Класс / Цель обучения</label>
-                        <select class="form-input" id="grade">
-                            <option>11 класс (подготовка к ЕНТ)</option>
-                            <option>10 класс</option>
-                            <option>9 класс</option>
-                            <option>Взрослый (IELTS/языки)</option>
+                        <select name="grade" class="form-input" id="grade">
+                            <option value="11 класс (ЕНТ)">11 класс (подготовка к ЕНТ)</option>
+                            <option value="10 класс">10 класс</option>
+                            <option value="9 класс">9 класс</option>
+                            <option value="Взрослый (IELTS)">Взрослый (IELTS/языки)</option>
                         </select>
                     </div>
                     
@@ -476,23 +488,23 @@
                         <label class="form-label">Интересующие предметы</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" value="math">
+                                <input type="checkbox" name="subjects[]" value="Математика">
                                 <span>Математика</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" value="physics">
+                                <input type="checkbox" name="subjects[]" value="Физика">
                                 <span>Физика</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" value="history">
+                                <input type="checkbox" name="subjects[]" value="История Казахстана">
                                 <span>История Казахстана</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" value="english">
+                                <input type="checkbox" name="subjects[]" value="Английский язык">
                                 <span>Английский язык</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" value="chinese">
+                                <input type="checkbox" name="subjects[]" value="Китайский язык">
                                 <span>Китайский язык</span>
                             </label>
                         </div>

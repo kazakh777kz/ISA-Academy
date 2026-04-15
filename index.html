@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ISA-Academy — онлайн школа подготовки к ЕНТ и языковых курсов. Английский, китайский, математика, физика, история Казахстана.">
+    <meta property="og:title" content="Подготовка к ЕНТ и языковые курсы | ISA-Academy">
+    <title>Онлайн школа ISA-Academy | ЕНТ и языковые курсы</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">I</div>
+                <div class="logo-text">
+                    <span class="logo-main">ISA-Academy</span>
+                    <span class="logo-sub">Онлайн школа подготовки</span>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav id="nav">
+                <ul>
+                    <li><a href="#about">О школе</a></li>
+                    <li><a href="#programs">Направления</a></li>
+                    <li><a href="#ent">Подготовка к ЕНТ</a></li>
+                    <li><a href="#results">Результаты</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <a href="#" class="btn btn-primary" id="headerCta">Бесплатный урок</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-item">🇰🇿 Подготовка к ЕНТ</span>
+                    <span class="badge-item">🌐 Языковые курсы</span>
+                </div>
+                <h1>Сдай <span class="highlight">ЕНТ на 140+</span> и выучи иностранный язык</h1>
+                <p class="hero-subtitle">Онлайн школа ISA-Academy: профессиональная подготовка к Единому Национальному Тестированию по 5 предметам и языковые курсы английского и китайского</p>
+                
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">📚</div>
+                        <div>
+                            <strong>Подготовка к ЕНТ</strong>
+                            <span>Математика, Физика, История Казахстана, Английский язык</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🌍</div>
+                        <div>
+                            <strong>Языковые курсы</strong>
+                            <span>Английский (общий + IELTS) и Китайский язык (HSK)</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">👨‍🏫</div>
+                        <div>
+                            <strong>Опытные педагоги</strong>
+                            <span>Преподаватели с опытом работы в школах и вузах Казахстана</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-accent" onclick="openModal(); return false;">Записаться на бесплатный урок</a>
+                    <a href="#programs" class="btn btn-outline">Смотреть программы</a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">140+</span>
+                        <span class="stat-text">Средний балл ЕНТ</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">500+</span>
+                        <span class="stat-text">Выпускников</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">98%</span>
+                        <span class="stat-text">Поступили в вузы</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Направления обучения</span>
+                <h2 class="section-title">Что мы <span class="text-gradient">предлагаем</span></h2>
+            </div>
+            
+            <div class="programs-grid">
+                <!-- English -->
+                <div class="program-card">
+                    <div class="program-header english">
+                        <div class="program-icon">🇬🇧</div>
+                        <h3>Английский язык</h3>
+                    </div>
+                    <div class="program-content">
+                        <ul class="program-list">
+                            <li><span class="check">✓</span> Общий английский (Beginner - Advanced)</li>
+                            <li><span class="check">✓</span> Подготовка к IELTS (Academic & General)</li>
+                            <li><span class="check">✓</span> Подготовка к ЕНТ по английскому</li>
+                            <li><span class="check">✓</span> Разговорный клуб</li>
+                            <li><span class="check">✓</span> Подготовка к собеседованию в вуз</li>
+                        </ul>
+                        <div class="program-footer">
+                            <span class="program-duration">3-9 месяцев</span>
+                            <button class="btn btn-small" onclick="openModal()">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chinese -->
+                <div class="program-card">
+                    <div class="program-header chinese">
+                        <div class="program-icon">🇨🇳</div>
+                        <h3>Китайский язык</h3>
+                    </div>
+                    <div class="program-content">
+                        <ul class="program-list">
+                            <li><span class="check">✓</span> С нуля до продвинутого уровня</li>
+                            <li><span class="check">✓</span> Подготовка к HSK 1-6 уровней</li>
+                            <li><span class="check">✓</span> Разговорная практика</li>
+                            <li><span class="check">✓</span> Бизнес-китайский</li>
+                            <li><span class="check">✓</span> Подготовка к обучению в Китае</li>
+                        </ul>
+                        <div class="program-footer">
+                            <span class="program-duration">6-12 месяцев</span>
+                            <button class="btn btn-small" onclick="openModal()">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Math -->
+                <div class="program-card">
+                    <div class="program-header math">
+                        <div class="program-icon">📐</div>
+                        <h3>Математика (ЕНТ)</h3>
+                    </div>
+                    <div class="program-content">
+                        <ul class="program-list">
+                            <li><span class="check">✓</span> Алгебра и начала анализа</li>
+                            <li><span class="check">✓</span> Геометрия</li>
+                            <li><span class="check">✓</span> Решение типовых задач ЕНТ</li>
+                            <li><span class="check">✓</span> Пробные тестирования</li>
+                            <li><span class="check">✓</span> Разбор ошибок</li>
+                        </ul>
+                        <div class="program-footer">
+                            <span class="program-duration">4-6 месяцев</span>
+                            <button class="btn btn-small" onclick="openModal()">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physics -->
+                <div class="program-card">
+                    <div class="program-header physics">
+                        <div class="program-icon">⚛️</div>
+                        <h3>Физика (ЕНТ)</h3>
+                    </div>
+                    <div class="program-content">
+                        <ul class="program-list">
+                            <li><span class="check">✓</span> Механика, термодинамика</li>
+                            <li><span class="check">✓</span> Электричество и магнетизм</li>
+                            <li><span class="check">✓</span> Оптика, квантовая физика</li>
+                            <li><span class="check">✓</span> Решение задач в формате ЕНТ</li>
+                            <li><span class="check">✓</span> Подготовка к экспериментальным заданиям</li>
+                        </ul>
+                        <div class="program-footer">
+                            <span class="program-duration">4-6 месяцев</span>
+                            <button class="btn btn-small" onclick="openModal()">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History -->
+                <div class="program-card">
+                    <div class="program-header history">
+                        <div class="program-icon">🏛️</div>
+                        <h3>История Казахстана</h3>
+                    </div>
+                    <div class="program-content">
+                        <ul class="program-list">
+                            <li><span class="check">✓</span> Древняя и средневековая история</li>
+                            <li><span class="check">✓</span> Казахское ханство</li>
+                            <li><span class="check">✓</span> Советский период</li>
+                            <li><span class="check">✓</span> Современность (1991-наши дни)</li>
+                            <li><span class="check">✓</span> Методика запоминания дат</li>
+                        </ul>
+                        <div class="program-footer">
+                            <span class="program-duration">3-4 месяца</span>
+                            <button class="btn btn-small" onclick="openModal()">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENT Specific Section -->
+    <section class="ent-section" id="ent">
+        <div class="container">
+            <div class="ent-grid">
+                <div class="ent-content">
+                    <span class="section-label">Подготовка к ЕНТ</span>
+                    <h2 class="section-title">Комплексная подготовка к <span class="text-gradient">Единому Национальному Тестированию</span></h2>
+                    <p class="ent-text">Наша методика направлена на максимальный результат. Мы не просто учим решать тесты, а даем глубокое понимание предмета.</p>
+                    
+                    <div class="ent-features">
+                        <div class="ent-item">
+                            <div class="ent-icon">📝</div>
+                            <div>
+                                <h4>Пробные тесты каждую неделю</h4>
+                                <p>В формате реального ЕНТ с таймером</p>
+                            </div>
+                        </div>
+                        <div class="ent-item">
+                            <div class="ent-icon">📊</div>
+                            <div>
+                                <h4>Анализ слабых сторон</h4>
+                                <p>Индивидуальный план подтягивания пробелов</p>
+                            </div>
+                        </div>
+                        <div class="ent-item">
+                            <div class="ent-icon">🎯</div>
+                            <div>
+                                <h4>Работа над ошибками</h4>
+                                <p>Разбор каждой ошибки с преподавателем</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="openModal()">Записаться на подготовку</button>
+                </div>
+                
+                <div class="ent-visual">
+                    <div class="ent-card">
+                        <h3>Гарантия результата</h3>
+                        <div class="ent-stat">
+                            <span class="ent-number">140+</span>
+                            <span class="ent-label">Средний балл наших учеников</span>
+                        </div>
+                        <div class="ent-divider"></div>
+                        <ul class="ent-list">
+                            <li>✓ Группы до 8 человек</li>
+                            <li>✓ Индивидуальные занятия</li>
+                            <li>✓ Доступ к записям уроков</li>
+                            <li>✓ Поддержка 24/7 в чате</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Почему выбирают <span class="text-gradient">ISA-Academy</span></h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h3>Опытные преподаватели</h3>
+                    <p>Педагоги с опытом работы в казахстанских школах и вузах. Знают специфику ЕНТ изнутри.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💻</div>
+                    <h3>Удобный онлайн-формат</h3>
+                    <p>Занятия в Zoom с интерактивной доской. Записи уроков доступны в личном кабинете.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Отслеживание прогресса</h3>
+                    <p>Регулярные пробные тестирования и детальная статистика по каждому предмету.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎓</div>
+                    <h3>Поступление в вузы</h3>
+                    <p>Помогаем с выбором специальности, консультируем по грантам и стипендиям.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">👥</div>
+                    <h3>Маленькие группы</h3>
+                    <p>Группы до 8 человек, чтобы уделить внимание каждому. Есть индивидуальные занятия.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Доступные цены</h3>
+                    <p>Гибкая система оплаты. Скидки при записи на несколько предметов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="stories" id="results">
+        <div class="container">
+            <h2 class="section-title center">Истории <span class="text-gradient">успеха</span> наших выпускников</h2>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-header">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                        <div class="story-badge">ЕНТ 142</div>
+                    </div>
+                    <div class="story-content">
+                        <h4>Артур С.</h4>
+                        <p class="story-uni">🎓 КазНУ имени аль-Фараби</p>
+                        <p class="story-text">"Готовился к ЕНТ по математике и физике. Преподаватели объяснили сложные темы простым языком. Поступил на грант!"</p>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                        <div class="story-badge">IELTS 7.0</div>
+                    </div>
+                    <div class="story-content">
+                        <h4>Айгуль М.</h4>
+                        <p class="story-uni">🎓 Назарбаев Университет</p>
+                        <p class="story-text">"Сдала IELTS на 7.0 после 4 месяцев подготовки. Особенно помогли занятия по Writing и Speaking."</p>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                        <div class="story-badge">ЕНТ 138</div>
+                    </div>
+                    <div class="story-content">
+                        <h4>Нурсултан К.</h4>
+                        <p class="story-uni">🎓 КБТУ (КБТУ)</p>
+                        <p class="story-text">"История Казахстана казалась сложной, но с ISA-Academy разобрался в хронологии. Рекомендую!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Начни подготовку к ЕНТ прямо сейчас</h2>
+                <p class="cta-text">Запишись на бесплатное пробное занятие и получи оценку своего текущего уровня</p>
+                
+                <div class="gift-box">
+                    <span class="gift-icon">🎁</span>
+                    <span class="gift-text">Пробный урок + диагностика знаний бесплатно</span>
+                </div>
+                
+                <button class="btn btn-white btn-large" onclick="openModal()">Записаться на пробный урок</button>
+                
+                <p class="cta-note">Звоните: <a href="tel:+77001234567">+7 (700) 123-45-67</a> (WhatsApp)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon">I</div>
+                        ISA-Academy
+                    </div>
+                    <p class="footer-text">Онлайн школа подготовки к ЕНТ и языковых курсов в Казахстане. Помогаем достичь высоких результатов с 2019 года.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">WhatsApp</a>
+                        <a href="#" class="social-link">Telegram</a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Направления</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Английский язык (IELTS)</a></li>
+                        <li><a href="#">Китайский язык (HSK)</a></li>
+                        <li><a href="#">Математика (ЕНТ)</a></li>
+                        <li><a href="#">Физика (ЕНТ)</a></li>
+                        <li><a href="#">История Казахстана</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">О школе</a></li>
+                        <li><a href="#">Преподаватели</a></li>
+                        <li><a href="#">Стоимость</a></li>
+                        <li><a href="#">Расписание</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contacts">
+                    <h4>Контакты</h4>
+                    <div class="footer-contact">
+                        <p><strong>Телефон:</strong><br><a href="tel:+77001234567">+7 (700) 123-45-67</a></p>
+                        <p style="margin-top: 1rem;"><strong>Email:</strong><br><a href="mailto:info@isa-academy.kz">info@isa-academy.kz</a></p>
+                        <p style="margin-top: 1rem;"><strong>Режим работы:</strong><br>Пн-Пт: 9:00 - 21:00<br>Сб: 10:00 - 18:00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 ISA-Academy. Все права защищены. Лицензия на образовательную деятельность</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Бесплатное пробное занятие</h3>
+                <p class="modal-subtitle">Заполните форму, мы свяжемся с вами в течение часа</p>
+            </div>
+            <div class="modal-body">
+                <form id="leadForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Ваше имя *</label>
+                        <input type="text" id="name" class="form-input" placeholder="Айгуль Семенова" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Телефон (WhatsApp) *</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Класс / Цель обучения</label>
+                        <select class="form-input" id="grade">
+                            <option>11 класс (подготовка к ЕНТ)</option>
+                            <option>10 класс</option>
+                            <option>9 класс</option>
+                            <option>Взрослый (IELTS/языки)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Интересующие предметы</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="math">
+                                <span>Математика</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="physics">
+                                <span>Физика</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="history">
+                                <span>История Казахстана</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="english">
+                                <span>Английский язык</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="chinese">
+                                <span>Китайский язык</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Отправить заявку</button>
+                </form>
+                <p class="form-privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

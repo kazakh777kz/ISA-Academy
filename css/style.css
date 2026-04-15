@@ -1,9 +1,8 @@
 :root {
-    --primary: #1e40af;        /* Темно-синий (академический) */
+    --primary: #1e40af;
     --primary-dark: #1e3a8a;
-    --secondary: #d97706;      /* Янтарный/золотой (казахстанский акцент) */
+    --secondary: #d97706;
     --accent: #f59e0b;
-    --kz-gold: #fecaca;        /* Золотистый для акцентов */
     --text: #0f172a;
     --text-light: #475569;
     --bg: #ffffff;
@@ -262,7 +261,6 @@ nav a:hover::after {
 
 .highlight {
     color: var(--accent);
-    position: relative;
 }
 
 .hero-subtitle {

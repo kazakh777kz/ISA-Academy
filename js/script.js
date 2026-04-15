@@ -38,44 +38,24 @@ document.getElementById('headerCta').addEventListener('click', (e) => {
     openModal();
 });
 
-// Form
-function handleSubmit(e) {
-    e.preventDefault();
-    
-    const checkboxes = document.querySelectorAll('.checkbox-label input:checked');
-    const subjects = Array.from(checkboxes).map(cb => cb.nextElementSibling.textContent);
-    
-    const formData = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        grade: document.getElementById('grade').value,
-        subjects: subjects,
-        timestamp: new Date().toISOString()
-    };
-    
-    console.log('Form submitted:', formData);
-    alert('Спасибо за заявку! Мы свяжемся с вами в течение часа для назначения пробного урока.');
-    
-    document.getElementById('leadForm').reset();
-    closeModal();
-}
-
-// Phone mask
+// Phone mask (для красоты форматирования)
 const phoneInput = document.getElementById('phone');
-phoneInput.addEventListener('input', (e) => {
-    let value = e.target.value.replace(/\D/g, '');
-    if (value.startsWith('7') || value.startsWith('8')) {
-        value = value.substring(1);
-    }
-    
-    let formattedValue = '+7';
-    if (value.length > 0) formattedValue += ' (' + value.substring(0, 3);
-    if (value.length >= 3) formattedValue += ') ' + value.substring(3, 6);
-    if (value.length >= 6) formattedValue += '-' + value.substring(6, 8);
-    if (value.length >= 8) formattedValue += '-' + value.substring(8, 10);
-    
-    e.target.value = formattedValue;
-});
+if (phoneInput) {
+    phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.startsWith('7') || value.startsWith('8')) {
+            value = value.substring(1);
+        }
+        
+        let formattedValue = '+7';
+        if (value.length > 0) formattedValue += ' (' + value.substring(0, 3);
+        if (value.length >= 3) formattedValue += ') ' + value.substring(3, 6);
+        if (value.length >= 6) formattedValue += '-' + value.substring(6, 8);
+        if (value.length >= 8) formattedValue += '-' + value.substring(8, 10);
+        
+        e.target.value = formattedValue;
+    });
+}
 
 // Header scroll effect
 const header = document.getElementById('header');

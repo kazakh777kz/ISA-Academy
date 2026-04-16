@@ -37,7 +37,6 @@ h1, h2, h3, h4 {
     font-weight: 700;
 }
 
-/* Header */
 header {
     position: fixed;
     top: 0;
@@ -62,44 +61,20 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    color: var(--text);
+    height: 60px;
 }
 
-.logo-icon {
-    width: 45px;
-    height: 45px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 800;
-    font-size: 1.25rem;
-    font-family: 'Montserrat', sans-serif;
+.logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.logo-main {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--primary);
-}
-
-.logo-sub {
-    font-size: 0.7rem;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 2px;
+.logo-img-footer {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
 }
 
 nav ul {
@@ -191,7 +166,6 @@ nav a:hover::after {
     font-size: 0.875rem;
 }
 
-/* Hero */
 .hero {
     min-height: 100vh;
     position: relative;
@@ -340,7 +314,6 @@ nav a:hover::after {
     opacity: 0.8;
 }
 
-/* Programs */
 .programs {
     padding: 6rem 2rem;
     background: var(--bg);
@@ -388,7 +361,7 @@ nav a:hover::after {
 
 .programs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -477,7 +450,6 @@ nav a:hover::after {
     font-weight: 600;
 }
 
-/* ENT Section */
 .ent-section {
     padding: 6rem 2rem;
     background: var(--bg-alt);
@@ -601,7 +573,6 @@ nav a:hover::after {
     font-weight: 700;
 }
 
-/* Benefits */
 .benefits {
     padding: 6rem 2rem;
     background: white;
@@ -644,7 +615,6 @@ nav a:hover::after {
     line-height: 1.6;
 }
 
-/* Stories */
 .stories {
     padding: 6rem 2rem;
     background: var(--bg-cream);
@@ -716,7 +686,6 @@ nav a:hover::after {
     font-style: italic;
 }
 
-/* CTA Section */
 .cta-section {
     padding: 6rem 2rem;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -766,7 +735,6 @@ nav a:hover::after {
     font-weight: 700;
 }
 
-/* Footer */
 footer {
     background: var(--text);
     color: white;
@@ -856,7 +824,6 @@ footer {
     font-size: 0.875rem;
 }
 
-/* Modal */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -1037,7 +1004,6 @@ footer {
     margin-top: 1rem;
 }
 
-/* Mobile Menu */
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -1057,7 +1023,6 @@ footer {
     border-radius: 3px;
 }
 
-/* Responsive */
 @media (max-width: 968px) {
     .programs-grid {
         grid-template-columns: 1fr;
@@ -1127,6 +1092,10 @@ footer {
     
     .social-links {
         justify-content: center;
+    }
+    
+    .logo-img {
+        height: 40px;
     }
     
     .checkbox-group {

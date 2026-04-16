@@ -10,6 +10,119 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Стили для карусели */
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 2rem;
+        }
+        
+        .story-card {
+            min-width: calc(33.333% - 1.33rem);
+            flex-shrink: 0;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid var(--primary, #1e40af);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--primary, #1e40af);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-btn:hover {
+            background: var(--primary, #1e40af);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.prev {
+            left: 1rem;
+        }
+        
+        .carousel-btn.next {
+            right: 1rem;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background: var(--primary, #1e40af);
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 968px) {
+            .story-card {
+                min-width: calc(50% - 1rem);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .story-card {
+                min-width: 100%;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .carousel-btn.prev {
+                left: 0.5rem;
+            }
+            
+            .carousel-btn.next {
+                right: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -229,7 +342,7 @@
 
                 <div class="program-card">
                     <div class="program-header russian">
-                        <div class="program-icon">📝</div>
+                        <div class="program-icon">📖</div>
                         <h3>Русский язык</h3>
                     </div>
                     <div class="program-content">
@@ -341,7 +454,7 @@
                 <div class="benefit-card">
                     <div class="benefit-icon">💻</div>
                     <h3>Удобный онлайн-формат</h3>
-                    <p>Занятия в Google Meet с интерактивной доской. Записи уроков доступны в личном кабинете.</p>
+                    <p>Занятия в Zoom с интерактивной доской. Записи уроков доступны в личном кабинете.</p>
                 </div>
                 
                 <div class="benefit-card">
@@ -374,42 +487,91 @@
     <section class="stories" id="results">
         <div class="container">
             <h2 class="section-title center">Истории <span class="text-gradient">успеха</span> наших выпускников</h2>
-            <div class="stories-grid">
-                <div class="story-card">
-                    <div class="story-header">
-                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&h=400&fit=crop" alt="Student" class="story-img">
-                        <div class="story-badge">ЕНТ 142</div>
+            
+            <!-- Карусель отзывов -->
+            <div class="carousel-container" id="testimonialsCarousel">
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">←</button>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">→</button>
+                
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Отзыв 1 -->
+                    <div class="story-card">
+                        <div class="story-header">
+                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                            <div class="story-badge">ЕНТ 142</div>
+                        </div>
+                        <div class="story-content">
+                            <h4>Артур С.</h4>
+                            <p class="story-uni">🎓 КазНУ имени аль-Фараби</p>
+                            <p class="story-text">"Готовился к ЕНТ по математике и физике. Преподаватели объяснили сложные темы простым языком. Поступил на грант!"</p>
+                        </div>
                     </div>
-                    <div class="story-content">
-                        <h4>Артур С.</h4>
-                        <p class="story-uni">🎓 КазНУ имени аль-Фараби</p>
-                        <p class="story-text">"Готовился к ЕНТ по математике и физике. Преподаватели объяснили сложные темы простым языком. Поступил на грант!"</p>
+                    
+                    <!-- Отзыв 2 -->
+                    <div class="story-card">
+                        <div class="story-header">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                            <div class="story-badge">IELTS 7.0</div>
+                        </div>
+                        <div class="story-content">
+                            <h4>Айгуль М.</h4>
+                            <p class="story-uni">🎓 Назарбаев Университет</p>
+                            <p class="story-text">"Сдала IELTS на 7.0 после 4 месяцев подготовки. Особенно помогли занятия по Writing и Speaking."</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 3 -->
+                    <div class="story-card">
+                        <div class="story-header">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                            <div class="story-badge">ЕНТ 138</div>
+                        </div>
+                        <div class="story-content">
+                            <h4>Нурсултан К.</h4>
+                            <p class="story-uni">🎓 КБТУ</p>
+                            <p class="story-text">"История Казахстана казалась сложной, но с International Study Academy разобрался в хронологии. Рекомендую!"</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Дополнительные отзывы для демонстрации карусели -->
+                    <div class="story-card">
+                        <div class="story-header">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                            <div class="story-badge">ЕНТ 145</div>
+                        </div>
+                        <div class="story-content">
+                            <h4>Дана Р.</h4>
+                            <p class="story-uni">🎓 МУИТ</p>
+                            <p class="story-text">"Занималась английским и математикой. Преподаватели всегда были на связи, даже вечером отвечали на вопросы!"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                            <div class="story-badge">HSK 4</div>
+                        </div>
+                        <div class="story-content">
+                            <h4>Ерасыл А.</h4>
+                            <p class="story-uni">🎓 Учёба в Китае</p>
+                            <p class="story-text">"Выучил китайский с нуля за 8 месяцев и сдал HSK 4. Теперь поступаю в университет в Пекине."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Student" class="story-img">
+                            <div class="story-badge">ЕНТ 140</div>
+                        </div>
+                        <div class="story-content">
+                            <h4>Айгерим Т.</h4>
+                            <p class="story-uni">🎓 СДУ</p>
+                            <p class="story-text">"Маленькие группы — это огромный плюс. Преподаватель уделил внимание каждому. Спасибо за подготовку!"</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="story-card">
-                    <div class="story-header">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop" alt="Student" class="story-img">
-                        <div class="story-badge">IELTS 7.0</div>
-                    </div>
-                    <div class="story-content">
-                        <h4>Айгуль М.</h4>
-                        <p class="story-uni">🎓 Назарбаев Университет</p>
-                        <p class="story-text">"Сдала IELTS на 7.0 после 4 месяцев подготовки. Особенно помогли занятия по Writing и Speaking."</p>
-                    </div>
-                </div>
-                
-                <div class="story-card">
-                    <div class="story-header">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Student" class="story-img">
-                        <div class="story-badge">ЕНТ 138</div>
-                    </div>
-                    <div class="story-content">
-                        <h4>Нурсултан К.</h4>
-                        <p class="story-uni">🎓 КБТУ</p>
-                        <p class="story-text">"История Казахстана казалась сложной, но с International Study Academy разобрался в хронологии. Рекомендую!"</p>
-                    </div>
-                </div>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </section>
@@ -439,7 +601,7 @@
                     <div class="footer-logo">
                         <img src="ISA.jpg" alt="International Study Academy" class="logo-img-footer">
                     </div>
-                    <p class="footer-text">Онлайн-школа подготовки к ЕНТ и языковых курсов в Казахстане. Помогаем достичь высоких результатов с 2023 года.</p>
+                    <p class="footer-text">Онлайн-школа подготовки к ЕНТ и языковых курсов в Казахстане. Помогаем достичь высоких результатов с 2019 года.</p>
                     <div class="social-links">
                         <a href="#" class="social-link">Instagram</a>
                         <a href="#" class="social-link">WhatsApp</a>
@@ -482,7 +644,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 International Study Academy. Все права защищены.</p>
+                <p>&copy; 2024 International Study Academy. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -570,5 +732,116 @@
     </div>
 
     <script src="js/script.js"></script>
+    <script>
+        // Логика карусели отзывов
+        let currentSlide = 0;
+        let autoPlayInterval;
+        const track = document.getElementById('carouselTrack');
+        const cards = document.querySelectorAll('.story-card');
+        const totalSlides = cards.length;
+        
+        // Определяем количество видимых карточек в зависимости от ширины экрана
+        function getVisibleSlides() {
+            if (window.innerWidth <= 640) return 1;
+            if (window.innerWidth <= 968) return 2;
+            return 3;
+        }
+        
+        // Создаем точки-индикаторы
+        function createDots() {
+            const dotsContainer = document.getElementById('carouselDots');
+            const visibleSlides = getVisibleSlides();
+            const dotsCount = totalSlides - visibleSlides + 1;
+            
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < dotsCount; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        function updateCarousel() {
+            const visibleSlides = getVisibleSlides();
+            const maxSlide = totalSlides - visibleSlides;
+            
+            // Циклическая прокрутка
+            if (currentSlide > maxSlide) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = maxSlide;
+            }
+            
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem gap
+            const offset = currentSlide * (cardWidth + gap);
+            track.style.transform = `translateX(-${offset}px)`;
+            
+            // Обновляем точки
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            updateCarousel();
+            resetAutoPlay();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetAutoPlay();
+        }
+        
+        function nextSlide() {
+            currentSlide++;
+            updateCarousel();
+        }
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 4000); // Меняем слайд каждые 4 секунды
+        }
+        
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+        
+        // Останавливаем автоплей при наведении
+        const carouselContainer = document.getElementById('testimonialsCarousel');
+        carouselContainer.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        carouselContainer.addEventListener('mouseleave', startAutoPlay);
+        
+        // Обработка свайпов для мобильных
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carouselContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+        
+        carouselContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                moveCarousel(1); // Свайп влево
+            } else if (touchEndX - touchStartX > 50) {
+                moveCarousel(-1); // Свайп вправо
+            }
+        }, {passive: true});
+        
+        // Обновляем при изменении размера окна
+        window.addEventListener('resize', () => {
+            createDots();
+            updateCarousel();
+        });
+        
+        // Инициализация
+        createDots();
+        updateCarousel();
+        startAutoPlay();
+    </script>
 </body>
 </html>

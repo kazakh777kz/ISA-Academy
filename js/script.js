@@ -1,18 +1,21 @@
-// Mobile Menu
+// Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const nav = document.getElementById('nav');
 
-mobileMenuBtn.addEventListener('click', () => {
-    nav.classList.toggle('active');
-});
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+}
 
+// Close mobile menu when clicking on links
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', () => {
         nav.classList.remove('active');
     });
 });
 
-// Modal
+// Modal Functions
 function openModal() {
     document.getElementById('modal').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -23,22 +26,27 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
+// Close modal when clicking outside
 document.getElementById('modal').addEventListener('click', (e) => {
     if (e.target === document.getElementById('modal')) {
         closeModal();
     }
 });
 
+// Close modal on Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+        closeModal();
+    }
 });
 
+// Open modal from header CTA button
 document.getElementById('headerCta').addEventListener('click', (e) => {
     e.preventDefault();
     openModal();
 });
 
-// Phone mask (для красоты форматирования)
+// Phone Input Mask
 const phoneInput = document.getElementById('phone');
 if (phoneInput) {
     phoneInput.addEventListener('input', (e) => {
@@ -48,16 +56,24 @@ if (phoneInput) {
         }
         
         let formattedValue = '+7';
-        if (value.length > 0) formattedValue += ' (' + value.substring(0, 3);
-        if (value.length >= 3) formattedValue += ') ' + value.substring(3, 6);
-        if (value.length >= 6) formattedValue += '-' + value.substring(6, 8);
-        if (value.length >= 8) formattedValue += '-' + value.substring(8, 10);
+        if (value.length > 0) {
+            formattedValue += ' (' + value.substring(0, 3);
+        }
+        if (value.length >= 3) {
+            formattedValue += ') ' + value.substring(3, 6);
+        }
+        if (value.length >= 6) {
+            formattedValue += '-' + value.substring(6, 8);
+        }
+        if (value.length >= 8) {
+            formattedValue += '-' + value.substring(8, 10);
+        }
         
         e.target.value = formattedValue;
     });
 }
 
-// Header scroll effect
+// Header Scroll Effect
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 50) {

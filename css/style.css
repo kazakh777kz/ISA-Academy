@@ -421,6 +421,9 @@ nav a:hover::after {
 .program-header.math { background: linear-gradient(135deg, #059669, #10b981); }
 .program-header.physics { background: linear-gradient(135deg, #7c3aed, #8b5cf6); }
 .program-header.history { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.program-header.world-history { background: linear-gradient(135deg, #0891b2, #06b6d4); }
+.program-header.russian { background: linear-gradient(135deg, #4338ca, #6366f1); }
+.program-header.kazakh { background: linear-gradient(135deg, #0d9488, #14b8a6); }
 
 .program-icon {
     font-size: 2rem;
@@ -965,16 +968,28 @@ footer {
 .checkbox-group {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.checkbox-group::-webkit-scrollbar {
+    width: 6px;
+}
+
+.checkbox-group::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
 }
 
 .checkbox-label {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
     border: 2px solid var(--border);
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
 }
@@ -988,6 +1003,7 @@ footer {
     width: 20px;
     height: 20px;
     accent-color: var(--primary);
+    flex-shrink: 0;
 }
 
 .checkbox-label span {
@@ -1111,5 +1127,9 @@ footer {
     
     .social-links {
         justify-content: center;
+    }
+    
+    .checkbox-group {
+        max-height: 250px;
     }
 }

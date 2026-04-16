@@ -97,29 +97,558 @@
             transform: scale(1.2);
         }
         
-        @media (max-width: 968px) {
-            .story-card {
-                min-width: calc(50% - 1rem);
+        /* Стили для Калькулятора Гранта */
+        .grant-calculator {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grant-calculator::before {
+            content: '🎓';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-size: 300px;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+        }
+        
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .calculator-input-group {
+            margin-bottom: 2rem;
+        }
+        
+        .calculator-label {
+            display: block;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+        
+        .score-input-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .score-input {
+            width: 100%;
+            padding: 1.25rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            border: 3px solid #e2e8f0;
+            border-radius: 16px;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .score-input:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
+        }
+        
+        .score-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            outline: none;
+            -webkit-appearance: none;
+            margin: 1rem 0;
+        }
+        
+        .score-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+        
+        .score-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .score-range-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #1e40af, #1e3a8a);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(30, 64, 175, 0.3);
+        }
+        
+        .grant-results {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 16px;
+            border-left: 4px solid #d97706;
+            display: none;
+        }
+        
+        .grant-results.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         
+        .grant-score-display {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .grant-score-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e40af;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+        }
+        
+        .grant-score-label {
+            color: #64748b;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .universities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .university-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .university-item:hover {
+            border-color: #1e40af;
+            transform: translateX(5px);
+        }
+        
+        .university-item.high-chance {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        
+        .university-item.medium-chance {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+        
+        .university-item.low-chance {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .university-info h4 {
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .university-info span {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        .chance-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+        
+        .chance-badge.high {
+            background: #10b981;
+            color: white;
+        }
+        
+        .chance-badge.medium {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .chance-badge.low {
+            background: #ef4444;
+            color: white;
+        }
+        
+        /* Стили для FAQ */
+        .faq-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: #cbd5e1;
+        }
+        
+        .faq-item.active {
+            border-color: #1e40af;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: #d97706;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: #f8fafc;
+        }
+        
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* Стили для Мини-Теста */
+        .mini-test {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mini-test::before {
+            content: '?';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 400px;
+            opacity: 0.05;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .test-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .test-card {
+            background: white;
+            color: #1e293b;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .test-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .progress-dot.active {
+            background: #d97706;
+            transform: scale(1.2);
+        }
+        
+        .progress-dot.completed {
+            background: #10b981;
+        }
+        
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #1e293b;
+            line-height: 1.5;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .answers-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .answer-btn {
+            padding: 1.25rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .answer-btn:hover:not(.disabled) {
+            border-color: #1e40af;
+            background: #f0f9ff;
+            transform: translateX(5px);
+        }
+        
+        .answer-btn.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+            color: #065f46;
+        }
+        
+        .answer-btn.wrong {
+            border-color: #ef4444;
+            background: #fef2f2;
+            color: #991b1b;
+        }
+        
+        .answer-btn.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .answer-letter {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #64748b;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+        
+        .answer-btn:hover:not(.disabled) .answer-letter {
+            background: #1e40af;
+            color: white;
+        }
+        
+        .answer-btn.correct .answer-letter {
+            background: #10b981;
+            color: white;
+        }
+        
+        .answer-btn.wrong .answer-letter {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .test-result {
+            text-align: center;
+            display: none;
+        }
+        
+        .test-result.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .result-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .result-score {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e40af;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-text {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+        
+        .next-btn, .restart-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 1rem;
+        }
+        
+        .next-btn:hover, .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(217, 119, 6, 0.3);
+        }
+        
+        .next-btn:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .test-info {
+            text-align: center;
+            margin-top: 2rem;
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+        
         @media (max-width: 640px) {
-            .story-card {
-                min-width: 100%;
-            }
-            
             .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+                display: none;
             }
             
-            .carousel-btn.prev {
-                left: 0.5rem;
+            .calculator-container,
+            .test-card {
+                padding: 2rem 1.5rem;
             }
             
-            .carousel-btn.next {
-                right: 0.5rem;
+            .grant-score-number {
+                font-size: 2rem;
+            }
+            
+            .university-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .question-text {
+                font-size: 1.125rem;
             }
         }
     </style>
@@ -142,8 +671,10 @@
                 <ul>
                     <li><a href="#about">О школе</a></li>
                     <li><a href="#programs">Направления</a></li>
-                    <li><a href="#ent">Подготовка к ЕНТ</a></li>
-                    <li><a href="#results">Результаты</a></li>
+                    <li><a href="#calculator">Калькулятор</a></li>
+                    <li><a href="#test">Тест</a></li>
+                    <li><a href="#results">Отзывы</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
             </nav>
@@ -383,6 +914,114 @@
         </div>
     </section>
 
+    <!-- КАЛЬКУЛЯТОР ГРАНТА -->
+    <section class="grant-calculator" id="calculator">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <span class="section-label" style="background: rgba(30, 64, 175, 0.1); color: #1e40af;">Планирование поступления</span>
+                <h2 class="section-title">Калькулятор шансов на <span class="text-gradient">грант</span></h2>
+                <p style="color: #64748b; margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Узнай, в какие вузы Казахстана ты можешь поступить на грант с твоим баллом ЕНТ
+                </p>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-input-group">
+                    <label class="calculator-label">Введи свой балл ЕНТ (от 50 до 140)</label>
+                    <div class="score-input-wrapper">
+                        <input type="number" class="score-input" id="scoreInput" min="50" max="140" placeholder="110" value="110">
+                        <input type="range" class="score-slider" id="scoreSlider" min="50" max="140" value="110">
+                        <div class="score-range-labels">
+                            <span>50</span>
+                            <span>95</span>
+                            <span>140</span>
+                        </div>
+                    </div>
+                    <button class="calculate-btn" onclick="calculateGrant()">Рассчитать шансы</button>
+                </div>
+                
+                <div class="grant-results" id="grantResults">
+                    <div class="grant-score-display">
+                        <div class="grant-score-number" id="resultScore">110</div>
+                        <div class="grant-score-label">баллов</div>
+                    </div>
+                    
+                    <div class="universities-list" id="universitiesList">
+                        <!-- Результаты будут здесь -->
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 12px; border: 2px dashed #d97706; text-align: center;">
+                        <p style="color: #92400e; font-weight: 600; margin-bottom: 0.5rem;">💡 Хочешь повысить балл?</p>
+                        <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 1rem;">Наши преподаватели помогут набрать +15-20 баллов к текущему результату</p>
+                        <button class="btn btn-primary" onclick="openModal()" style="width: 100%;">Получить план подготовки</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- МИНИ-ТЕСТ -->
+    <section class="mini-test" id="test">
+        <div class="container">
+            <div class="test-container">
+                <div class="section-header" style="margin-bottom: 3rem;">
+                    <span class="section-label" style="background: rgba(255,255,255,0.2); color: white;">Проверь себя</span>
+                    <h2 class="section-title" style="color: white;">Мини-тест на <span style="color: #fbbf24;">готовность к ЕНТ</span></h2>
+                    <p style="color: rgba(255,255,255,0.9); margin-top: 1rem;">
+                        5 вопросов по математике. Успеешь за 3 минуты?
+                    </p>
+                </div>
+                
+                <div class="test-card" id="testCard">
+                    <div class="test-header">
+                        <div class="test-progress" id="testProgress">
+                            <div class="progress-dot active"></div>
+                            <div class="progress-dot"></div>
+                            <div class="progress-dot"></div>
+                            <div class="progress-dot"></div>
+                            <div class="progress-dot"></div>
+                        </div>
+                        <div style="text-align: center; color: #64748b; font-size: 0.875rem; font-weight: 600;">
+                            Вопрос <span id="currentQuestionNum">1</span> из 5
+                        </div>
+                    </div>
+                    
+                    <div id="quizContent">
+                        <div class="question-text" id="questionText">
+                            Загрузка вопроса...
+                        </div>
+                        
+                        <div class="answers-grid" id="answersGrid">
+                            <!-- Варианты ответов -->
+                        </div>
+                        
+                        <button class="next-btn" id="nextBtn" onclick="nextQuestion()" disabled>Далее →</button>
+                    </div>
+                    
+                    <div class="test-result" id="testResult">
+                        <div class="result-icon" id="resultIcon">🎉</div>
+                        <div class="result-score" id="resultScore">4/5</div>
+                        <div class="result-text" id="resultText">Отличный результат!</div>
+                        
+                        <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; text-align: left;">
+                            <h4 style="color: #1e40af; margin-bottom: 0.5rem;">📊 Анализ ошибок:</h4>
+                            <p id="mistakeAnalysis" style="color: #475569; font-size: 0.95rem; line-height: 1.6;">
+                                Ты хорошо справился с базовыми задачами, но допустил ошибку в задании повышенной сложности. Это нормально — именно над такими задачами мы работаем на наших занятиях.
+                            </p>
+                        </div>
+                        
+                        <button class="restart-btn" onclick="restartTest()">Пройти ещё раз</button>
+                        <button class="btn btn-primary" onclick="openModal()" style="width: 100%; margin-top: 1rem;">Записаться на подготовку</button>
+                    </div>
+                </div>
+                
+                <div class="test-info">
+                    * Тест составлен на основе реальных заданий ЕНТ 2025 года
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="ent-section" id="ent">
         <div class="container">
             <div class="ent-grid">
@@ -438,6 +1077,89 @@
         </div>
     </section>
 
+    <!-- FAQ СЕКЦИЯ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <span class="section-label">Частые вопросы</span>
+                <h2 class="section-title">Всё, что нужно знать про <span class="text-gradient">ЕНТ 2026</span></h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Что брать с собой на ЕНТ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Обязательно имей при себе: удостоверение личности (паспорт/ID), допуск на ЕНТ (распечатанный), чёрную гелевую ручку, воду в прозрачной бутылке без этикетки, сладкий батончик для перекуса. <br><br>
+                            <strong>Запрещено:</strong> телефон (даже выключенный), смарт-часы, наушники, шпаргалки, калькулятор (он будет предоставлен на месте).
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Можно ли пересдать ЕНТ, если не устроил балл?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Да, в 2026 году предусмотрены две волны ЕНТ: основная (июнь) и дополнительная (август). Если ты не набрал нужный балл в первый раз, можно зарегистрироваться на пересдачу. <br><br>
+                            Однако помни: при поступлении в вуз учитывается <strong>только последний результат</strong>, даже если он ниже предыдущего. Рекомендуем готовиться серьёзно с первого раза.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Как пользоваться калькулятором на ЕНТ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            На ЕНТ предоставляется базовый инженерный калькулятор. Учти: <br>
+                            • Нельзя приносить свой калькулятор<br>
+                            • Калькулятор выдаётся перед началом теста и собирается после<br>
+                            • Рекомендуем заранее потренироваться именно на модели Casio fx-82ES или аналогичной<br>
+                            • На наших пробных тестах мы используем такие же калькуляторы, чтобы ты привык заранее.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Сколько стоит подача документов в вузы?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            В 2026 году подача заявлений в вузы через портал <strong>egov.kz</strong> или <strong>adilet.edu.kz</strong> — <strong>бесплатная</strong>. <br><br>
+                            Однако за приём и рассмотрение документов некоторые вузы (в частности Назарбаев Университет) могут взимать плату (обычно 5-15 тыс. тенге). Государственные вузы принимают документы бесплатно.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Какие предметы самые важные для поступления на грант?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <strong>Обязательные для всех:</strong> История Казахстана + математическая грамотность + грамотность чтения.<br><br>
+                            <strong>Для IT и инженерии:</strong> Математика + Физика<br>
+                            <strong>Для медицины:</strong> Биология + Химия<br>
+                            <strong>Для юриспруденции:</strong> История Казахстана + Всемирная история<br><br>
+                            Профильные предметы имеют больший вес при расчёте конкурсного балла. Мы помогаем выбрать оптимальную комбинацию под твою специальность.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="benefits">
         <div class="container">
             <div class="section-header">
@@ -454,7 +1176,7 @@
                 <div class="benefit-card">
                     <div class="benefit-icon">💻</div>
                     <h3>Удобный онлайн-формат</h3>
-                    <p>Занятия в Google Meet с интерактивной доской. Записи уроков доступны в личном кабинете.</p>
+                    <p>Занятия в Zoom с интерактивной доской. Записи уроков доступны в личном кабинете.</p>
                 </div>
                 
                 <div class="benefit-card">
@@ -601,7 +1323,7 @@
                     <div class="footer-logo">
                         <img src="ISA.jpg" alt="International Study Academy" class="logo-img-footer">
                     </div>
-                    <p class="footer-text">Онлайн-школа подготовки к ЕНТ и языковых курсов в Казахстане. Помогаем достичь высоких результатов с 2023 года.</p>
+                    <p class="footer-text">Онлайн-школа подготовки к ЕНТ и языковых курсов в Казахстане. Помогаем достичь высоких результатов с 2019 года.</p>
                     <div class="social-links">
                         <a href="#" class="social-link">Instagram</a>
                         <a href="#" class="social-link">WhatsApp</a>
@@ -733,21 +1455,252 @@
 
     <script src="js/script.js"></script>
     <script>
-        // Логика карусели отзывов
+        // ===== КАЛЬКУЛЯТОР ГРАНТА =====
+        const scoreInput = document.getElementById('scoreInput');
+        const scoreSlider = document.getElementById('scoreSlider');
+        const grantResults = document.getElementById('grantResults');
+        
+        // Синхронизация поля и слайдера
+        scoreInput.addEventListener('input', (e) => {
+            let val = parseInt(e.target.value) || 50;
+            if (val > 140) val = 140;
+            if (val < 50) val = 50;
+            scoreSlider.value = val;
+        });
+        
+        scoreSlider.addEventListener('input', (e) => {
+            scoreInput.value = e.target.value;
+        });
+        
+        function calculateGrant() {
+            const score = parseInt(scoreInput.value) || 0;
+            document.getElementById('resultScore').textContent = score;
+            
+            const universities = [
+                { name: 'Назарбаев Университет', minScore: 130, region: 'Астана', type: 'высокий' },
+                { name: 'КазНУ им. аль-Фараби', minScore: 110, region: 'Алматы', type: 'высокий' },
+                { name: 'КБТУ', minScore: 105, region: 'Алматы', type: 'высокий' },
+                { name: 'СДУ', minScore: 100, region: 'Алматы', type: 'средний' },
+                { name: 'МУИТ', minScore: 95, region: 'Алматы', type: 'средний' },
+                { name: 'ЕНУ им. Л.Н. Гумилёва', minScore: 90, region: 'Астана', type: 'средний' },
+                { name: 'Карагандинский гос. унив.', minScore: 85, region: 'Караганда', type: 'средний' },
+                { name: 'ЮКГУ им. М. Ауэзова', minScore: 80, region: 'Шымкент', type: 'базовый' },
+                { name: 'Восточно-Казахстанский унив.', minScore: 75, region: 'Усть-Каменогорск', type: 'базовый' },
+                { name: 'Актюбинский региональный унив.', minScore: 70, region: 'Актобе', type: 'базовый' }
+            ];
+            
+            const list = document.getElementById('universitiesList');
+            list.innerHTML = '';
+            
+            universities.forEach(uni => {
+                let chance, chanceClass, chanceText;
+                
+                if (score >= uni.minScore + 10) {
+                    chance = 'high';
+                    chanceClass = 'high-chance';
+                    chanceText = 'Высокий шанс';
+                } else if (score >= uni.minScore) {
+                    chance = 'medium';
+                    chanceClass = 'medium-chance';
+                    chanceText = 'Умеренный шанс';
+                } else if (score >= uni.minScore - 10) {
+                    chance = 'low';
+                    chanceClass = 'low-chance';
+                    chanceText = 'Нужно подтянуть';
+                } else {
+                    return; // Не показываем если шансов совсем нет
+                }
+                
+                const item = document.createElement('div');
+                item.className = `university-item ${chanceClass}`;
+                item.innerHTML = `
+                    <div class="university-info">
+                        <h4>${uni.name}</h4>
+                        <span>${uni.region} • Проходной: ~${uni.minScore}</span>
+                    </div>
+                    <div class="chance-badge ${chance}">${chanceText}</div>
+                `;
+                list.appendChild(item);
+            });
+            
+            if (list.children === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #64748b; padding: 2rem;">С таким баллом грант получить сложно, но мы поможем подготовиться! 💪</p>';
+            }
+            
+            grantResults.classList.add('show');
+            grantResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // ===== МИНИ-ТЕСТ =====
+        const questions = [
+            {
+                question: "Решите уравнение: 2x² - 8x + 6 = 0",
+                answers: ["x = 1 и x = 3", "x = 2 и x = 3", "x = -1 и x = -3", "x = 4 и x = 2"],
+                correct: 0,
+                explanation: "Разделим на 2: x² - 4x + 3 = 0. По теореме Виета: x₁ + x₂ = 4, x₁ · x₂ = 3. Значит x = 1 и x = 3."
+            },
+            {
+                question: "Найдите площадь прямоугольника со сторонами 12 см и 8 см.",
+                answers: ["20 см²", "40 см²", "96 см²", "48 см²"],
+                correct: 2,
+                explanation: "S = a · b = 12 · 8 = 96 см²"
+            },
+            {
+                question: "Синус 30° равен:",
+                answers: ["1/2", "√3/2", "1", "√2/2"],
+                correct: 0,
+                explanation: "sin(30°) = 1/2 = 0.5. Это табличное значение."
+            },
+            {
+                question: "В geometric progression первый член 2, знаменатель 3. Найдите 4-й член.",
+                answers: ["54", "18", "27", "162"],
+                correct: 0,
+                explanation: "b₄ = b₁ · q³ = 2 · 3³ = 2 · 27 = 54"
+            },
+            {
+                question: "Логарифм по основанию 2 от числа 8 равен:",
+                answers: ["4", "3", "2", "16"],
+                correct: 1,
+                explanation: "log₂(8) = 3, так как 2³ = 8"
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+        
+        function loadQuestion() {
+            answered = false;
+            const q = questions[currentQuestion];
+            document.getElementById('questionText').textContent = q.question;
+            document.getElementById('currentQuestionNum').textContent = currentQuestion + 1;
+            
+            // Обновляем прогресс
+            const dots = document.querySelectorAll('.progress-dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.remove('active', 'completed');
+                if (idx < currentQuestion) dot.classList.add('completed');
+                else if (idx === currentQuestion) dot.classList.add('active');
+            });
+            
+            const grid = document.getElementById('answersGrid');
+            grid.innerHTML = '';
+            
+            q.answers.forEach((ans, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'answer-btn';
+                btn.innerHTML = `
+                    <span class="answer-letter">${String.fromCharCode(65 + idx)}</span>
+                    <span>${ans}</span>
+                `;
+                btn.onclick = () => checkAnswer(idx, btn);
+                grid.appendChild(btn);
+            });
+            
+            document.getElementById('nextBtn').disabled = true;
+            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? 'Узнать результат' : 'Далее →';
+        }
+        
+        function checkAnswer(selectedIndex, btnElement) {
+            if (answered) return;
+            answered = true;
+            
+            const q = questions[currentQuestion];
+            const buttons = document.querySelectorAll('.answer-btn');
+            
+            buttons.forEach((btn, idx) => {
+                btn.classList.add('disabled');
+                if (idx === q.correct) {
+                    btn.classList.add('correct');
+                } else if (idx === selectedIndex && idx !== q.correct) {
+                    btn.classList.add('wrong');
+                }
+            });
+            
+            if (selectedIndex === q.correct) {
+                score++;
+            }
+            
+            // Показываем объяснение
+            setTimeout(() => {
+                alert(`Правильный ответ: ${q.answers[q.correct]}\n\n${q.explanation}`);
+                document.getElementById('nextBtn').disabled = false;
+            }, 500);
+        }
+        
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+        
+        function showResults() {
+            document.getElementById('quizContent').style.display = 'none';
+            document.getElementById('testResult').classList.add('show');
+            
+            const percentage = (score / questions.length) * 100;
+            document.getElementById('resultScore').textContent = `${score}/${questions.length}`;
+            
+            let icon, text, analysis;
+            if (percentage === 100) {
+                icon = '🏆';
+                text = 'Идеально! Ты готов к ЕНТ на 100%';
+                analysis = 'Отличный результат! Ты хорошо знаешь базовую математику. Рекомендуем сфокусироваться на заданиях повышенной сложности, чтобы набрать 140+ баллов.';
+            } else if (percentage >= 60) {
+                icon = '👍';
+                text = 'Хороший результат!';
+                analysis = `Ты ответил правильно на ${score} из 5 вопросов. Это хороший уровень, но есть куда расти. Особое внимание обрати на темы, где допустил ошибки — именно они будут тормозить твой балл на ЕНТ.`;
+            } else {
+                icon = '📚';
+                text = 'Нужна подготовка';
+                analysis = 'Пока результат ниже среднего, но не переживай! С системной подготовкой за 4-6 месяцев можно выйти на 120+ баллов. Мы поможем закрыть все пробелы с нуля.';
+            }
+            
+            document.getElementById('resultIcon').textContent = icon;
+            document.getElementById('resultText').textContent = text;
+            document.getElementById('mistakeAnalysis').textContent = analysis;
+        }
+        
+        function restartTest() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('quizContent').style.display = 'block';
+            document.getElementById('testResult').classList.remove('show');
+            loadQuestion();
+        }
+        
+        // ===== FAQ АККОРДЕОН =====
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Закрываем все
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // Открываем текущий, если был закрыт
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+        
+        // ===== КАРУСЕЛЬ =====
         let currentSlide = 0;
         let autoPlayInterval;
         const track = document.getElementById('carouselTrack');
         const cards = document.querySelectorAll('.story-card');
         const totalSlides = cards.length;
         
-        // Определяем количество видимых карточек в зависимости от ширины экрана
         function getVisibleSlides() {
             if (window.innerWidth <= 640) return 1;
             if (window.innerWidth <= 968) return 2;
             return 3;
         }
         
-        // Создаем точки-индикаторы
         function createDots() {
             const dotsContainer = document.getElementById('carouselDots');
             const visibleSlides = getVisibleSlides();
@@ -766,19 +1719,14 @@
             const visibleSlides = getVisibleSlides();
             const maxSlide = totalSlides - visibleSlides;
             
-            // Циклическая прокрутка
-            if (currentSlide > maxSlide) {
-                currentSlide = 0;
-            } else if (currentSlide < 0) {
-                currentSlide = maxSlide;
-            }
+            if (currentSlide > maxSlide) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = maxSlide;
             
             const cardWidth = cards[0].offsetWidth;
-            const gap = 32; // 2rem gap
+            const gap = 32;
             const offset = currentSlide * (cardWidth + gap);
             track.style.transform = `translateX(-${offset}px)`;
             
-            // Обновляем точки
             document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
@@ -796,13 +1744,11 @@
             resetAutoPlay();
         }
         
-        function nextSlide() {
-            currentSlide++;
-            updateCarousel();
-        }
-        
         function startAutoPlay() {
-            autoPlayInterval = setInterval(nextSlide, 4000); // Меняем слайд каждые 4 секунды
+            autoPlayInterval = setInterval(() => {
+                currentSlide++;
+                updateCarousel();
+            }, 4000);
         }
         
         function resetAutoPlay() {
@@ -810,38 +1756,31 @@
             startAutoPlay();
         }
         
-        // Останавливаем автоплей при наведении
         const carouselContainer = document.getElementById('testimonialsCarousel');
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
         carouselContainer.addEventListener('mouseleave', startAutoPlay);
         
-        // Обработка свайпов для мобильных
         let touchStartX = 0;
-        let touchEndX = 0;
-        
         carouselContainer.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         }, {passive: true});
         
         carouselContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) {
-                moveCarousel(1); // Свайп влево
-            } else if (touchEndX - touchStartX > 50) {
-                moveCarousel(-1); // Свайп вправо
-            }
+            const touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) moveCarousel(1);
+            else if (touchEndX - touchStartX > 50) moveCarousel(-1);
         }, {passive: true});
         
-        // Обновляем при изменении размера окна
         window.addEventListener('resize', () => {
             createDots();
             updateCarousel();
         });
         
-        // Инициализация
+        // Инициализация при загрузке
         createDots();
         updateCarousel();
         startAutoPlay();
+        loadQuestion(); // Загружаем первый вопрос теста
     </script>
 </body>
 </html>

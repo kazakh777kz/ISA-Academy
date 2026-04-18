@@ -353,6 +353,14 @@ nav a:hover::after {
     text-align: center;
 }
 
+.section-subtitle {
+    color: var(--text-light);
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
 .text-gradient {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
@@ -1025,54 +1033,302 @@ footer {
 
 /* ===== ПРЕПОДАВАТЕЛИ ===== */
 .teachers {
-    padding: 6rem 2rem;
-    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    padding: 8rem 2rem;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.teachers-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231e40af' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.6;
 }
 
 .teachers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .teacher-card {
     background: white;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     border: 1px solid var(--border);
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .teacher-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(30, 64, 175, 0.2);
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.15);
+    border-color: rgba(30, 64, 175, 0.15);
+}
+
+.teacher-card.featured {
+    grid-column: span 1;
+    border: 2px solid var(--primary);
+}
+
+.teacher-card.featured::before {
+    content: '👑 ТОП-преподаватель';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: white;
+    padding: 0.375rem 0.875rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
 }
 
 .teacher-photo-wrapper {
     position: relative;
     width: 100%;
-    height: 280px;
+    height: 320px;
     overflow: hidden;
+    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+}
+
+.teacher-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    z-index: 2;
+    transition: left 0.7s;
+}
+
+.teacher-card:hover .teacher-shine {
+    left: 100%;
 }
 
 .teacher-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .teacher-card:hover .teacher-photo {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .teacher-subject-badge {
     position: absolute;
     bottom: 16px;
+    left: 16px;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    backdrop-filter: blur(10px);
+}
+
+.math-badge { background: linear-gradient(135deg, #059669, #10b981); }
+.english-badge { background: linear-gradient(135deg, #1e40af, #3b82f6); }
+.physics-badge { background: linear-gradient(135deg, #7c3aed, #8b5cf6); }
+.history-badge { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.chinese-badge { background: linear-gradient(135deg, #dc2626, #ef4444); }
+.russian-badge { background: linear-gradient(135deg, #4338ca, #6366f1); }
+
+.teacher-rating {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.375rem 0.75rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.teacher-info {
+    padding: 1.75rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.teacher-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 0.375rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.teacher-exp {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.teacher-exp::before {
+    content: '•';
+    color: var(--secondary);
+    font-weight: 800;
+}
+
+.teacher-divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    margin: 0.75rem 0 1rem;
+    border-radius: 2px;
+}
+
+.teacher-desc {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.teacher-achievements {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.achievement {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    padding: 0.625rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+    flex: 1;
+    min-width: 80px;
+    border: 1px solid #bae6fd;
+    transition: var(--transition);
+}
+
+.achievement:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+}
+
+.ach-num {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ach-label {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.teachers-cta {
+    text-align: center;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== ВИДЕО-ОТЗЫВЫ ===== */
+.video-reviews {
+    padding: 8rem 2rem;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.video-reviews-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.video-reviews .section-title {
+    color: white;
+}
+
+.video-reviews .section-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.video-label {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.videos-showcase {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.video-featured {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.video-featured:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+}
+
+.video-wrapper-outer {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-wrapper-outer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-badge-main {
+    position: absolute;
+    top: 16px;
     left: 16px;
     background: linear-gradient(135deg, var(--secondary), var(--accent));
     color: white;
@@ -1080,159 +1336,258 @@ footer {
     border-radius: 50px;
     font-weight: 700;
     font-size: 0.875rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
 }
 
-.teacher-info {
-    padding: 1.5rem;
-    flex: 1;
+.video-featured-info {
+    padding: 2rem;
+}
+
+.video-author {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
 }
 
-.teacher-name {
+.author-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.author-details h4 {
+    color: white;
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--text);
     margin-bottom: 0.25rem;
-    font-family: 'Montserrat', sans-serif;
 }
 
-.teacher-exp {
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
+.author-details p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
 }
 
-.teacher-desc {
-    color: var(--text-light);
-    font-size: 0.95rem;
-    line-height: 1.6;
+.video-quote {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-style: italic;
     margin-bottom: 1.25rem;
-    flex: 1;
+    padding-left: 1rem;
+    border-left: 3px solid var(--secondary);
 }
 
-.teacher-stats {
+.video-tags {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
 }
 
-.teacher-stat {
-    background: var(--bg-alt);
-    padding: 0.375rem 0.75rem;
+.v-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.375rem 0.875rem;
     border-radius: 50px;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    color: var(--text-light);
-}
-
-/* ===== ВИДЕО-ОТЗЫВЫ ===== */
-.video-reviews {
-    padding: 6rem 2rem;
-    background: var(--bg-alt);
-}
-
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.video-card {
-    background: white;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     transition: var(--transition);
 }
 
-.video-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+.v-tag:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.video-thumb {
+.videos-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.side-video-card {
+    display: flex;
+    gap: 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.side-video-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.side-video-thumb {
     position: relative;
-    width: 100%;
-    height: 220px;
+    width: 160px;
+    height: 120px;
+    flex-shrink: 0;
     overflow: hidden;
 }
 
-.video-thumb img {
+.side-video-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s;
 }
 
-.video-card:hover .video-thumb img {
-    transform: scale(1.05);
+.side-video-card:hover .side-video-thumb img {
+    transform: scale(1.1);
 }
 
-.play-button {
+.side-play-btn {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: transform 0.3s ease;
-    z-index: 2;
+    transition: transform 0.3s;
 }
 
-.video-card:hover .play-button {
+.side-video-card:hover .side-play-btn {
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+.side-duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.side-video-info {
+    padding: 1rem 1rem 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.side-video-info h4 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.side-video-info p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.side-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.videos-grid-all {
+    position: relative;
+    z-index: 1;
+}
+
+.all-videos-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.all-videos-header h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.all-videos-header p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+}
+
+.all-videos-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.mini-video {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mini-video:hover {
+    transform: translateY(-5px);
+}
+
+.mini-thumb {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    aspect-ratio: 16/9;
+}
+
+.mini-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.mini-video:hover .mini-thumb img {
+    transform: scale(1.1);
+}
+
+.mini-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.mini-video:hover .mini-play {
+    background: var(--primary);
+    color: white;
     transform: translate(-50%, -50%) scale(1.1);
 }
 
-.video-duration {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    background: rgba(0, 0, 0, 0.8);
+.mini-video p {
     color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
     font-weight: 600;
-    z-index: 2;
-}
-
-.video-info {
-    padding: 1.5rem;
-}
-
-.video-info h4 {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.video-info p {
-    color: var(--text-light);
     font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
 }
 
-.video-meta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.video-meta span {
-    font-size: 0.875rem;
-    color: var(--primary);
-    font-weight: 600;
-    background: rgba(30, 64, 175, 0.08);
-    padding: 0.375rem 0.75rem;
-    border-radius: 50px;
+.mini-video span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
 }
 
 /* ===== МОДАЛЬНОЕ ОКНО ДЛЯ ВИДЕО ===== */
@@ -1242,8 +1597,8 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(20px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1262,12 +1617,13 @@ footer {
 .video-modal-content {
     position: relative;
     width: 100%;
-    max-width: 900px;
-    background: black;
-    border-radius: 16px;
+    max-width: 1000px;
+    background: #000;
+    border-radius: 20px;
     overflow: hidden;
     transform: scale(0.9);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
 }
 
 .video-modal.active .video-modal-content {
@@ -1276,36 +1632,37 @@ footer {
 
 .video-modal-close {
     position: absolute;
-    top: -50px;
+    top: -60px;
     right: 0;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     color: white;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
+    backdrop-filter: blur(10px);
 }
 
 .video-modal-close:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
     transform: rotate(90deg);
 }
 
-.video-wrapper {
+.video-wrapper-modal {
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
 }
 
-.video-wrapper iframe {
+.video-wrapper-modal iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -1331,6 +1688,27 @@ footer {
     
     .hero-stats {
         gap: 2rem;
+    }
+    
+    .videos-showcase {
+        grid-template-columns: 1fr;
+    }
+    
+    .all-videos-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .side-video-card {
+        flex-direction: column;
+    }
+    
+    .side-video-thumb {
+        width: 100%;
+        height: 180px;
+    }
+    
+    .side-video-info {
+        padding: 1rem;
     }
 }
 
@@ -1398,7 +1776,11 @@ footer {
         grid-template-columns: 1fr;
     }
     
-    .videos-grid {
+    .teacher-card.featured {
+        grid-column: span 1;
+    }
+    
+    .all-videos-row {
         grid-template-columns: 1fr;
     }
     
@@ -1407,10 +1789,11 @@ footer {
     }
     
     .video-modal-close {
-        top: -40px;
+        top: -50px;
+        right: 10px;
     }
     
     .teacher-photo-wrapper {
-        height: 240px;
+        height: 280px;
     }
 }

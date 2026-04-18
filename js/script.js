@@ -83,11 +83,33 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ===== ВИДЕО-МОДАЛКА =====
+// ===== ВИДЕО-ФУНКЦИИ =====
+function playSideVideo(card, videoUrl) {
+    // Находим главное видео
+    const featured = document.querySelector('.video-featured iframe');
+    
+    // Меняем iframe с анимацией
+    featured.style.opacity = '0';
+    featured.style.transition = 'opacity 0.3s';
+    
+    setTimeout(() => {
+        featured.src = videoUrl;
+        featured.onload = () => {
+            featured.style.opacity = '1';
+        };
+    }, 300);
+    
+    // Прокручиваем к видео
+    document.querySelector('.video-featured').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+    });
+}
+
 function openVideoModal(videoUrl) {
     const modal = document.getElementById('videoModal');
     const iframe = document.getElementById('videoIframe');
-    iframe.src = videoUrl + '?autoplay=1';
+    iframe.src = videoUrl;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
